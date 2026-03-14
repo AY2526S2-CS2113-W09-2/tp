@@ -1,9 +1,16 @@
 package seedu.duke.parser;
 
-import seedu.duke.Duke;
 import seedu.duke.command.AddItemCommand;
 import seedu.duke.command.Command;
 import seedu.duke.exception.DukeException;
+import seedu.duke.parser.category.FruitParser;
+import seedu.duke.parser.category.ParsedFruitFields;
+import seedu.duke.parser.category.ParsedSnackFields;
+import seedu.duke.parser.category.ParsedToiletriesFields;
+import seedu.duke.parser.category.ParsedVegetableFields;
+import seedu.duke.parser.category.SnackParser;
+import seedu.duke.parser.category.ToiletriesParser;
+import seedu.duke.parser.category.VegetableParser;
 
 public class AddItemCommandParser {
     protected String itemName = null;

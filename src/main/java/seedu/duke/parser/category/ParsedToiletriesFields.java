@@ -1,4 +1,4 @@
-package seedu.duke.parser;
+package seedu.duke.parser.category;
 
 public class ParsedToiletriesFields {
     public final String brand;

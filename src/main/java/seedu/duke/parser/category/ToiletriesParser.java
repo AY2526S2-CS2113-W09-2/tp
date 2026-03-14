@@ -1,6 +1,7 @@
-package seedu.duke.parser;
+package seedu.duke.parser.category;
 
 import seedu.duke.exception.DukeException;
+import seedu.duke.parser.FieldParser;
 
 public class ToiletriesParser {
     public static ParsedToiletriesFields parse(String input) throws DukeException {

@@ -1,6 +1,8 @@
-package seedu.duke.parser;
+package seedu.duke.parser.category;
 
 import seedu.duke.exception.DukeException;
+import seedu.duke.parser.DateParser;
+import seedu.duke.parser.FieldParser;
 
 public class VegetableParser {
     public static ParsedVegetableFields parse(String input) throws DukeException {
