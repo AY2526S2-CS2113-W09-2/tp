@@ -10,3 +10,6 @@ Hello! Welcome to InventoryDock!
 What can I do for you?
 ____________________________________________________________
 [Error] Unknown command. Type 'help' to see available commands.
+____________________________________________________________
+Goodbye! See you next time!
+____________________________________________________________
