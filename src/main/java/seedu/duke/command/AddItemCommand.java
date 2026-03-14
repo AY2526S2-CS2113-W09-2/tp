@@ -7,6 +7,7 @@ import seedu.duke.model.items.Fruit;
 import seedu.duke.model.items.Snack;
 import seedu.duke.model.items.Toiletries;
 import seedu.duke.model.items.Vegetable;
+import seedu.duke.ui.UI;
 
 public class AddItemCommand extends Command {
     private final String itemName;
@@ -36,33 +37,37 @@ public class AddItemCommand extends Command {
     }
 
     @Override
-    public void execute(Inventory inventory) {
-        if (!inventory.hasCategory(categoryName)) {
-            System.out.println("Category not found: " + categoryName);
+    public void execute(Inventory inventory, UI ui) {
+        Category category = inventory.findCategoryByName(categoryName);
+
+        if (category == null) {
+            ui.showCategoryNotFound(categoryName);
             return;
         }
 
-        Category category = inventory.findCategoryByName(categoryName);
         Item item = createItemByCategory(categoryName);
-        category.addItem(item);
 
-        System.out.println("Added item " + itemName + " (qty: " + quantity + ") to category "
-                + category.getName() + " at bin " + bin);
+        if (item == null) {
+            ui.showUnsupportedCategory(categoryName);
+            return;
+        }
+
+        category.addItem(item);
+        ui.showItemAdded(itemName, quantity, category.getName(), bin);
     }
 
     private Item createItemByCategory(String categoryName) {
         switch (categoryName.toLowerCase()) {
-        case "fruits":
-            return new Fruit(itemName, quantity, bin, expiryDate, size, isRipe);
-        case "vegetables":
-            return new Vegetable(itemName, quantity, bin, expiryDate, isLeafy);
-        case "toiletries":
-            return new Toiletries(itemName, quantity, bin, brand, isLiquid);
-        case "snacks":
-            return new Snack(itemName, quantity, bin, brand, expiryDate);
-        default:
-            System.out.println("Unsupported category: " + categoryName);
-            return null;
+            case "fruits":
+                return new Fruit(itemName, quantity, bin, expiryDate, size, isRipe);
+            case "vegetables":
+                return new Vegetable(itemName, quantity, bin, expiryDate, isLeafy);
+            case "toiletries":
+                return new Toiletries(itemName, quantity, bin, brand, isLiquid);
+            case "snacks":
+                return new Snack(itemName, quantity, bin, brand, expiryDate);
+            default:
+                return null;
         }
     }
 }

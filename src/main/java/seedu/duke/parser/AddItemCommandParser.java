@@ -17,10 +17,6 @@ public class AddItemCommandParser {
     protected boolean isLeafy = false;
     protected boolean isLiquid = false;
 
-//    private String[] splitToken(String input) {
-//        return input.split("/", 2);
-//    }
-
     private void resetFields() {
         itemName = null;
         categoryName = null;
@@ -34,53 +30,10 @@ public class AddItemCommandParser {
         isLiquid = false;
     }
 
-//    private void parseFields(String[] words) {
-//        for (String token : words) {
-//            String[] parts = splitToken(token);
-//            String fieldName = parts[0];
-//            String fieldValue = parts.length > 1 ? parts[1] : "";
-//
-//            switch (fieldName) {
-//            case "item":
-//                itemName = fieldValue;
-//                break;
-//            case "category":
-//                categoryName = fieldValue;
-//                break;
-//            case "bin":
-//                bin = fieldValue;
-//                break;
-//            case "qty":
-//                quantity = Integer.parseInt(fieldValue);
-//                break;
-//            case "brand":
-//                brand = fieldValue;
-//                break;
-//            case "expiryDate":
-//                expiryDate = fieldValue;
-//                break;
-//            case "size":
-//                size = fieldValue;
-//                break;
-//            case "isRipe":
-//                isRipe = Boolean.parseBoolean(fieldValue);
-//                break;
-//            case "isLeafy":
-//                isLeafy = Boolean.parseBoolean(fieldValue);
-//                break;
-//            case "isLiquid":
-//                isLiquid = Boolean.parseBoolean(fieldValue);
-//                break;
-//            default:
-//                break;
-//            }
-//        }
-//    }
-
     private void validateOrder(String input, String[] fields) throws DukeException {
         int previous = -1;
 
-        for (String field: fields) {
+        for (String field : fields) {
             int current = input.indexOf(field);
 
             if (current != -1) {
@@ -91,6 +44,7 @@ public class AddItemCommandParser {
             }
         }
     }
+
     private void parseCommonFields(String input) throws DukeException {
         itemName = FieldParser.extractField(input, "item/", "category/");
         categoryName = FieldParser.extractField(input, "category/", "bin/");
@@ -191,31 +145,7 @@ public class AddItemCommandParser {
                 brand, expiryDate, size, isRipe, isLeafy, isLiquid);
     }
 
-//    public Command handleFruit(String[] words) {
-//        resetFields();
-//        parseFields(words);
-//        return buildCommand();
-//    }
-//
-//    public Command handleSnack(String[] words) {
-//        resetFields();
-//        parseFields(words);
-//        return buildCommand();
-//    }
-//
-//    public Command handleToiletries(String[] words) {
-//        resetFields();
-//        parseFields(words);
-//        return buildCommand();
-//    }
-//
-//    public Command handleVegetables(String[] words) {
-//        resetFields();
-//        parseFields(words);
-//        return buildCommand();
-//    }
-
-        public Command handleFruit(String input) throws DukeException {
+    public Command handleFruit(String input) throws DukeException {
         resetFields();
         validateOrder(input, new String[]{"item/", "category/", "bin/", "qty/",
                 "expiryDate/", "size/", "isRipe/"});
