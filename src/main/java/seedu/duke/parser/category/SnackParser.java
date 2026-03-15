@@ -7,9 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SnackParser {
+    private static Logger logger = Logger.getLogger("SnackParser");
     public final String brand;
     public final String expiryDate;
-    private static Logger logger = Logger.getLogger("SnackParser");
 
     public SnackParser(String brand, String expiryDate) {
         this.brand = brand;

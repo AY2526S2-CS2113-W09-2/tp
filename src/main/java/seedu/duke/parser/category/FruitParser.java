@@ -7,10 +7,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FruitParser {
+    private static Logger logger = Logger.getLogger("FruitParser");
+
     public final String expiryDate;
     public final String size;
     public final boolean isRipe;
-    private static Logger logger = Logger.getLogger("FruitParser");
 
     public FruitParser(String expiryDate, String size, boolean isRipe) {
         this.expiryDate = expiryDate;

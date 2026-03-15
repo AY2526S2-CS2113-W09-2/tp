@@ -6,9 +6,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ToiletriesParser {
+    private static Logger logger = Logger.getLogger("ToiletriesParser");
+
     public final String brand;
     public final boolean isLiquid;
-    private static Logger logger = Logger.getLogger("ToiletriesParser");
 
     public ToiletriesParser(String brand, boolean isLiquid) {
         this.brand = brand;
