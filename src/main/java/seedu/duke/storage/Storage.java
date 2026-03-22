@@ -1,5 +1,6 @@
 package seedu.duke.storage;
 
+import seedu.duke.command.Command;
 import seedu.duke.exception.DukeException;
 import seedu.duke.model.Category;
 import seedu.duke.model.Inventory;
@@ -8,6 +9,8 @@ import seedu.duke.model.items.Fruit;
 import seedu.duke.model.items.Snack;
 import seedu.duke.model.items.Toiletries;
 import seedu.duke.model.items.Vegetable;
+import seedu.duke.parser.AddItemCommandParser;
+import seedu.duke.ui.UI;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +26,7 @@ public class Storage {
         createFile();
     }
 
-    public void createFile() throws IOException {
+    private void createFile() throws IOException {
         if (dataFile.exists()) {
             return;
         }
@@ -34,15 +37,17 @@ public class Storage {
         dataFile.createNewFile();
     }
 
-    public void load(Inventory inventory) throws DukeException {
+    public void load(Inventory inventory, UI ui) throws DukeException {
         try {
             List<String> lines = Files.readAllLines(dataFile.toPath());
+            AddItemCommandParser addItemCommandParser = new AddItemCommandParser();
 
             for (String line : lines) {
                 try {
-                    parseLine(line, inventory);
-                } catch (DukeException | NumberFormatException e) {
-                    continue;
+                    Command command = parseStoredLine(line, addItemCommandParser);
+                    command.execute(inventory, null);
+                } catch (DukeException e) {
+                    ui.showSkippedLine(line, e.getMessage());
                 }
             }
         } catch (IOException e) {
@@ -50,54 +55,33 @@ public class Storage {
         }
     }
 
-    private void parseLine(String line, Inventory inventory) throws DukeException {
-        String[] parts = line.split("\\|");
+    private Command parseStoredLine(String line, AddItemCommandParser parser) throws DukeException {
+        String category = extractCategory(line);
 
-        StorageCommonFields common = StorageCommonFields.parse(parts);
-
-        Category category = inventory.findCategoryByName(common.categoryName);
-        if (category == null) {
-            throw new DukeException("Category not found.");
-        }
-
-        Item item;
-
-        switch (common.categoryName) {
+        switch (category) {
         case "fruits":
-            if (parts.length != 7) {
-                throw new DukeException("Invalid fruit line.");
-            }
-            item = new Fruit(common.itemName, common.quantity, common.bin,
-                    parts[4].trim(), parts[5].trim(),
-                    Boolean.parseBoolean(parts[6].trim()));
-            break;
+            return parser.handleFruit(line);
         case "snacks":
-            if (parts.length != 6) {
-                throw new DukeException("Invalid snack line.");
-            }
-            item = new Snack(common.itemName, common.quantity, common.bin,
-                    parts[4].trim(), parts[5].trim());
-            break;
+            return parser.handleSnack(line);
         case "toiletries":
-            if (parts.length != 7) {
-                throw new DukeException("Invalid toiletries line.");
-            }
-            item = new Toiletries(common.itemName, common.quantity, common.bin,
-                    parts[4].trim(), Boolean.parseBoolean(parts[5].trim()),
-                    parts[6].trim());
-            break;
+            return parser.handleToiletries(line);
         case "vegetables":
-            if (parts.length != 6) {
-                throw new DukeException("Invalid vegetable line.");
-            }
-            item = new Vegetable(common.itemName, common.quantity, common.bin,
-                    parts[4].trim(), Boolean.parseBoolean(parts[5].trim()));
-            break;
+            return parser.handleVegetables(line);
         default:
-            throw new DukeException("Unknown category.");
+            throw new DukeException("Unknown category in storage.");
+        }
+    }
+
+    private String extractCategory(String line) throws DukeException {
+        String[] tokens = line.trim().split(" ");
+
+        for (String token : tokens) {
+            if (token.startsWith("category/")) {
+                return token.substring("category/".length()).trim().toLowerCase();
+            }
         }
 
-        category.addItem(item);
+        throw new DukeException("Missing category in storage line.");
     }
 
     public void save(Inventory inventory) throws DukeException {
@@ -117,39 +101,35 @@ public class Storage {
     }
 
     private String formatItem(Item item, String categoryName) {
-        String base = item.getName() + " | "
-                + categoryName + " | "
-                + item.getBinLocation() + " | "
-                + item.getQuantity();
+        String base = "item/" + item.getName()
+                + " category/" + categoryName
+                + " bin/" + item.getBinLocation()
+                + " qty/" + item.getQuantity();
 
         if (item instanceof Fruit) {
             Fruit fruit = (Fruit) item;
-            return base + " | "
-                    + item.getExpiryDate() + " | "
-                    + fruit.getSize() + " | "
-                    + fruit.isRipe();
+            return base + " expiryDate/" + item.getExpiryDate()
+                    + " size/" + fruit.getSize()
+                    + " isRipe/" + fruit.isRipe();
         }
 
         if (item instanceof Snack) {
             Snack snack = (Snack) item;
-            return base + " | "
-                    + snack.getBrand() + " | "
-                    + item.getExpiryDate();
+            return base + " brand/" + snack.getBrand()
+                    + " expiryDate/" + item.getExpiryDate();
         }
 
         if (item instanceof Toiletries) {
             Toiletries toiletries = (Toiletries) item;
-            return base + " | "
-                    + toiletries.getBrand() + " | "
-                    + toiletries.isLiquid() + " | "
-                    + item.getExpiryDate();
+            return base + " brand/" + toiletries.getBrand()
+                    + " isLiquid/" + toiletries.isLiquid()
+                    + " expiryDate/" + item.getExpiryDate();
         }
 
         if (item instanceof Vegetable) {
             Vegetable vegetable = (Vegetable) item;
-            return base + " | "
-                    + item.getExpiryDate() + " | "
-                    + vegetable.isLeafy();
+            return base + " expiryDate/" + item.getExpiryDate()
+                    + " isLeafy/" + vegetable.isLeafy();
         }
 
         return base;

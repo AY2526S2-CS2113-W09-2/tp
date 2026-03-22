@@ -32,7 +32,7 @@ public class Duke {
         inventory.addCategories(new Category("toiletries"));
         inventory.addCategories(new Category("snacks"));
 
-        storage.load(inventory);
+        storage.load(inventory, ui);
     }
 
     public void run() throws DukeException {
