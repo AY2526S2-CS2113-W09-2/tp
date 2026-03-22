@@ -1,6 +1,7 @@
 package seedu.duke.parser;
 
 import seedu.duke.command.Command;
+import seedu.duke.command.FindItemByCategoryCommand;
 import seedu.duke.command.FindItemByExpiryDateCommand;
 import seedu.duke.ui.UI;
 
@@ -8,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FindItemParser {
-    private static Logger logger = Logger.getLogger(DeleteCommandParser.class.getName());
+    private static Logger logger = Logger.getLogger(FindItemParser.class.getName());
 
     private final UI ui;
 
@@ -18,8 +19,6 @@ public class FindItemParser {
 
     public Command parse(String input) {
         assert input != null : "FindCommandParser received null input.";
-        logger.log(Level.INFO, "Processing Find command.");
-
         if (input.isEmpty()) {
             logger.log(Level.WARNING, "Find command missing target.");
             ui.showInvalidInput("Please specify what to find. "
@@ -40,17 +39,14 @@ public class FindItemParser {
         }
 
         String type = parts[0].trim().toLowerCase();
-        String name = parts[1].trim();
+        String name = parts[1].trim().toLowerCase();
 
         switch (type) {
-        case "category":
-            logger.log(Level.INFO, "Parsed find item command for: " + name);
-            //return new FindItemByKeywordCommand(name);
         case "keyword":
-            logger.log(Level.INFO, "Parsed find category command for: " + name);
-            //return new FindItemByCategoryCommand(name);
+//            return new findItemByKeywordCommand(name);
+        case "category":
+            return new FindItemByCategoryCommand(name);
         case "expirydate":
-            logger.log(Level.INFO, "Parsed find expiryDate command for: " + name);
             return new FindItemByExpiryDateCommand(name);
         default:
             logger.log(Level.WARNING, "Unknown find type: " + type);
