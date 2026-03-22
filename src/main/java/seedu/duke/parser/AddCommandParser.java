@@ -68,6 +68,24 @@ public class AddCommandParser {
             return parser.handleToiletries(trimmedInput);
         case "vegetables":
             return parser.handleVegetables(trimmedInput);
+        case "drinks":
+            return parser.handleDrinks(trimmedInput);
+        case "icecream":
+            return parser.handleIcecream(trimmedInput);
+        case "sweets":
+            return parser.handleSweets(trimmedInput);
+        case "burger":
+            return parser.handleBurger(trimmedInput);
+        case "setmeal":
+            return parser.handleSetMeal(trimmedInput);
+        case "seafood":
+            return parser.handleSeafood(trimmedInput);
+        case "meat":
+            return parser.handleMeat(trimmedInput);
+        case "petfood":
+            return parser.handlePetFood(trimmedInput);
+        case "accessories":
+            return parser.handleAccessories(trimmedInput);
         default:
             logger.log(Level.WARNING, "Unknown add command category: " + category);
             throw new DukeException("Unknown category: " + category);
