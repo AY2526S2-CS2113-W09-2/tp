@@ -41,7 +41,7 @@ public class FindItemParser {
         }
 
         String type = parts[0].trim().toLowerCase();
-        String name = parts[1].trim();
+        String name = parts[1].trim().toLowerCase();
 
         switch (type) {
         case "keyword":
