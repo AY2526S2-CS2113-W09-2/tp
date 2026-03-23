@@ -17,20 +17,29 @@ public class Duke {
         inventory = new Inventory();
         parser = new Parser(ui);
 
-        inventory.addCategories(new Category("fruits"));
-        inventory.addCategories(new Category("vegetables"));
-        inventory.addCategories(new Category("toiletries"));
-        inventory.addCategories(new Category("snacks"));
-        inventory.addCategories(new Category("drinks"));
-        inventory.addCategories(new Category("icecream"));
-        inventory.addCategories(new Category("sweets"));
-        inventory.addCategories(new Category("burger"));
-        inventory.addCategories(new Category("setmeal"));
-        inventory.addCategories(new Category("seafood"));
-        inventory.addCategories(new Category("meat"));
-        inventory.addCategories(new Category("petfood"));
-        inventory.addCategories(new Category("accessories"));
+        String[] categoryNames = {
+            "fruits",
+            "vegetables",
+            "toiletries",
+            "snacks",
+            "drinks",
+            "icecream",
+            "sweets",
+            "burger",
+            "setmeal",
+            "seafood",
+            "meat",
+            "petfood",
+            "accessories"
+        };
 
+        for (String categoryName : categoryNames) {
+            inventory.addCategories(new Category(categoryName));
+        }
+    }
+
+    public static void main(String[] args) throws DukeException {
+        new Duke().run();
     }
 
     public void run() throws DukeException {
@@ -53,14 +62,9 @@ public class Duke {
             } catch (DukeException e) {
                 ui.showError(e.getMessage());
             }
-
         }
 
         ui.showGoodbye();
         ui.close();
-    }
-
-    public static void main(String[] args) throws DukeException {
-        new Duke().run();
     }
 }
