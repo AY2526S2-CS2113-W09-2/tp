@@ -3,6 +3,7 @@ package seedu.duke.parser.category;
 import seedu.duke.exception.DukeException;
 import seedu.duke.parser.DateParser;
 import seedu.duke.parser.FieldParser;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,13 +13,11 @@ public class MeatParser {
     public final String expiryDate;
     public final String meatType;
     public final String origin;
-    public final boolean isFrozen;
 
-    public MeatParser(String expiryDate, String meatType, String origin, boolean isFrozen) {
+    public MeatParser(String expiryDate, String meatType, String origin) {
         this.expiryDate = expiryDate;
         this.meatType = meatType;
         this.origin = origin;
-        this.isFrozen = isFrozen;
     }
 
     public static MeatParser parse(String input) throws DukeException {
@@ -38,25 +37,13 @@ public class MeatParser {
             throw new DukeException("Missing meatType for meat.");
         }
 
-        String origin = FieldParser.extractField(input, "origin/", "isFrozen/");
+        String origin = FieldParser.extractField(input, "origin/", null);
         if (origin == null || origin.trim().isEmpty()) {
             logger.log(Level.WARNING, "Missing origin for meat.");
             throw new DukeException("Missing origin for meat.");
         }
 
-        String frozenString = FieldParser.extractField(input, "isFrozen/", null);
-        if (frozenString == null || frozenString.trim().isEmpty()) {
-            logger.log(Level.WARNING, "Missing frozen status for meat.");
-            throw new DukeException("Missing frozen status for meat.");
-        }
-
-        if (!(frozenString.equalsIgnoreCase("true") || frozenString.equalsIgnoreCase("false"))) {
-            logger.log(Level.WARNING, "isFrozen must be true or false");
-            throw new DukeException("isFrozen must be true or false");
-        }
-        boolean isFrozen = Boolean.parseBoolean(frozenString);
-
         logger.log(Level.INFO, "End of processing meat.");
-        return new MeatParser(expiryDate, meatType, origin, isFrozen);
+        return new MeatParser(expiryDate, meatType, origin);
     }
 }
