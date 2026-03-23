@@ -14,17 +14,12 @@ public class DrinksParser {
     public final String brand;
     public final String flavour;
     public final int volume;
-    public final boolean isCold;
-    public final boolean isCanned;
 
-    public DrinksParser(String expiryDate, String brand, String flavour,
-                        int volume, boolean isCold, boolean isCanned) {
+    public DrinksParser(String expiryDate, String brand, String flavour, int volume) {
         this.expiryDate = expiryDate;
         this.brand = brand;
         this.flavour = flavour;
         this.volume = volume;
-        this.isCold = isCold;
-        this.isCanned = isCanned;
     }
 
     public static DrinksParser parse(String input) throws DukeException {
@@ -50,7 +45,7 @@ public class DrinksParser {
             throw new DukeException("Missing flavour for drinks.");
         }
 
-        String volumeString = FieldParser.extractField(input, "volume/", "isCold/");
+        String volumeString = FieldParser.extractField(input, "volume/", null);
         if (volumeString == null || volumeString.trim().isEmpty()) {
             logger.log(Level.WARNING, "Missing volume for drinks.");
             throw new DukeException("Missing volume for drinks.");
@@ -64,31 +59,7 @@ public class DrinksParser {
             throw new DukeException("Volume must be an integer.");
         }
 
-        String coldString = FieldParser.extractField(input, "isCold/", "isCanned/");
-        if (coldString == null || coldString.trim().isEmpty()) {
-            logger.log(Level.WARNING, "Missing coldness for drinks.");
-            throw new DukeException("Missing coldness for drinks.");
-        }
-
-        if (!(coldString.equalsIgnoreCase("true") || coldString.equalsIgnoreCase("false"))) {
-            logger.log(Level.WARNING, "isCold must be true or false");
-            throw new DukeException("isCold must be true or false");
-        }
-        boolean isCold = Boolean.parseBoolean(coldString);
-
-        String cannedString = FieldParser.extractField(input, "isCanned/", null);
-        if (cannedString == null || cannedString.trim().isEmpty()) {
-            logger.log(Level.WARNING, "Missing canned status for drinks.");
-            throw new DukeException("Missing canned status for drinks.");
-        }
-
-        if (!(cannedString.equalsIgnoreCase("true") || cannedString.equalsIgnoreCase("false"))) {
-            logger.log(Level.WARNING, "isCanned must be true or false");
-            throw new DukeException("isCanned must be true or false");
-        }
-        boolean isCanned = Boolean.parseBoolean(cannedString);
-
         logger.log(Level.INFO, "End of processing drinks.");
-        return new DrinksParser(expiryDate, brand, flavour, volume, isCold, isCanned);
+        return new DrinksParser(expiryDate, brand, flavour, volume);
     }
 }
