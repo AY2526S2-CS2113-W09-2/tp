@@ -5,10 +5,6 @@ import seedu.duke.exception.DukeException;
 import seedu.duke.model.Category;
 import seedu.duke.model.Inventory;
 import seedu.duke.model.Item;
-import seedu.duke.model.items.Fruit;
-import seedu.duke.model.items.Snack;
-import seedu.duke.model.items.Toiletries;
-import seedu.duke.model.items.Vegetable;
 import seedu.duke.parser.AddItemCommandParser;
 import seedu.duke.ui.UI;
 
@@ -27,7 +23,6 @@ public class Storage {
     public Storage(String filePath) {
         assert filePath != null : "Storage received null file path.";
         this.dataFile = new File(filePath);
-        logger.log(Level.INFO, "Storage initialized with file path: " + dataFile.getPath());
     }
 
     private void createFile() throws IOException {
@@ -39,7 +34,6 @@ public class Storage {
             parent.mkdirs();
         }
         dataFile.createNewFile();
-        logger.log(Level.INFO, "Created storage file: " + dataFile.getPath());
     }
 
     public void load(Inventory inventory, UI ui) throws DukeException {
@@ -49,7 +43,6 @@ public class Storage {
             createFile();
             List<String> lines = Files.readAllLines(dataFile.toPath());
             AddItemCommandParser addItemCommandParser = new AddItemCommandParser();
-            logger.log(Level.INFO, "Loading inventory from storage file: " + dataFile.getPath());
 
             for (String line : lines) {
                 try {
@@ -121,37 +114,6 @@ public class Storage {
     private String formatItem(Item item, String categoryName) {
         assert item != null : "Storage.formatItem received null item.";
         assert categoryName != null : "Storage.formatItem received null categoryName.";
-        String base = "item/" + item.getName()
-                + " category/" + categoryName
-                + " bin/" + item.getBinLocation()
-                + " qty/" + item.getQuantity();
-
-        if (item instanceof Fruit) {
-            Fruit fruit = (Fruit) item;
-            return base + " expiryDate/" + item.getExpiryDate()
-                    + " size/" + fruit.getSize()
-                    + " isRipe/" + fruit.isRipe();
-        }
-
-        if (item instanceof Snack) {
-            Snack snack = (Snack) item;
-            return base + " brand/" + snack.getBrand()
-                    + " expiryDate/" + item.getExpiryDate();
-        }
-
-        if (item instanceof Toiletries) {
-            Toiletries toiletries = (Toiletries) item;
-            return base + " brand/" + toiletries.getBrand()
-                    + " isLiquid/" + toiletries.isLiquid()
-                    + " expiryDate/" + item.getExpiryDate();
-        }
-
-        if (item instanceof Vegetable) {
-            Vegetable vegetable = (Vegetable) item;
-            return base + " expiryDate/" + item.getExpiryDate()
-                    + " isLeafy/" + vegetable.isLeafy();
-        }
-
-        return base;
+        return item.toStorageString(categoryName);
     }
 }
