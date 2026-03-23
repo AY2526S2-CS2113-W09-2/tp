@@ -11,21 +11,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class SweetsParserTest {
     @Test
     public void parse_validInput_success() {
-        String input = "expiryDate/2026-05-10 brand/Haribo ingradient/Gelatin sweetnessLevel/High";
+        String input = "expiryDate/2026-05-10 brand/Haribo sweetnessLevel/High";
         assertDoesNotThrow(() -> SweetsParser.parse(input));
     }
 
     @Test
-    public void parse_missingIngradient_throwsException() {
-        String input = "expiryDate/2026-05-10 brand/Haribo ingradient/ sweetnessLevel/High";
+    public void parse_missingBrand_throwsException() {
+        String input = "expiryDate/2026-05-10 brand/ sweetnessLevel/High";
         DukeException e = assertThrows(DukeException.class,
                 () -> SweetsParser.parse(input));
-        assertEquals("Missing ingradient for sweets.", e.getMessage());
+        assertEquals("Missing brand for sweets.", e.getMessage());
     }
 
     @Test
     public void parse_missingSweetnessLevel_throwsException() {
-        String input = "expiryDate/2026-05-10 brand/Haribo ingradient/Gelatin sweetnessLevel/";
+        String input = "expiryDate/2026-05-10 brand/Haribo sweetnessLevel/";
         DukeException e = assertThrows(DukeException.class,
                 () -> SweetsParser.parse(input));
         assertEquals("Missing sweetness level for sweets.", e.getMessage());
