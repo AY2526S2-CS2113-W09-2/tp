@@ -1,5 +1,6 @@
 # IDEA files
 /.idea/
+/.run/
 /out/
 /*.iml
 
@@ -15,3 +16,5 @@ bin/
 
 /text-ui-test/ACTUAL.TXT
 text-ui-test/EXPECTED-UNIX.TXT
+data/
+logs/

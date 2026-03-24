@@ -2,6 +2,7 @@ package seedu.duke;
 
 import seedu.duke.command.Command;
 import seedu.duke.exception.DukeException;
+import seedu.duke.logging.LoggerConfig;
 import seedu.duke.model.Category;
 import seedu.duke.model.Inventory;
 import seedu.duke.parser.Parser;
@@ -39,6 +40,8 @@ public class Duke {
     }
 
     public static void main(String[] args) throws DukeException {
+        LoggerConfig logger = new LoggerConfig("./logs/logger.txt");
+        logger.setup();
         new Duke().run();
     }
 
