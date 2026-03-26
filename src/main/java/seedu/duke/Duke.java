@@ -63,6 +63,7 @@ public class Duke {
                 }
 
                 if (command.isExit()) {
+                    storage.save(inventory);
                     break;
                 }
 
