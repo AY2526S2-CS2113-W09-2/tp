@@ -4,7 +4,7 @@ import seedu.duke.exception.DukeException;
 import seedu.duke.model.Category;
 import seedu.duke.model.Inventory;
 import seedu.duke.model.Item;
-import seedu.duke.parser.DateParser;
+import seedu.duke.parser.category.CommonFieldParser;
 import seedu.duke.ui.UI;
 
 import java.util.Map;
@@ -66,27 +66,15 @@ public class UpdateItemCommand extends Command {
                 item.setBinLocation(value.trim());
                 break;
             case "qty":
-                item.setQuantity(parsePositiveInteger(value));
+                item.setQuantity(CommonFieldParser.parseQuantity(value));
                 break;
             case "expiryDate":
-                DateParser.validateDate(value);
+                CommonFieldParser.validateExpiryDate(value);
                 item.setExpiryDate(value.trim());
                 break;
             default:
                 throw new DukeException("Only newItem/, bin/, qty/, and expiryDate/ can be updated.");
             }
-        }
-    }
-
-    private int parsePositiveInteger(String value) throws DukeException {
-        try {
-            int parsed = Integer.parseInt(value.trim());
-            if (parsed <= 0) {
-                throw new DukeException("Quantity must be a positive integer.");
-            }
-            return parsed;
-        } catch (NumberFormatException e) {
-            throw new DukeException("Quantity must be an integer.");
         }
     }
 
