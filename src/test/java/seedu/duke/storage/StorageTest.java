@@ -9,7 +9,6 @@ import seedu.duke.model.items.Fruit;
 import seedu.duke.model.items.Snack;
 import seedu.duke.model.items.Toiletries;
 import seedu.duke.model.items.Vegetable;
-import seedu.duke.storage.Storage;
 import seedu.duke.ui.UI;
 
 import java.io.File;

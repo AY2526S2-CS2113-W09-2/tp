@@ -1,8 +1,6 @@
 package seedu.duke.model;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.model.Category;
-import seedu.duke.model.Item;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -1,7 +1,6 @@
 package seedu.duke.model.items;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.model.items.Vegetable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

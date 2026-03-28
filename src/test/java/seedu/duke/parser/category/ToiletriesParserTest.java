@@ -2,7 +2,6 @@ package seedu.duke.parser.category;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.exception.DukeException;
-import seedu.duke.parser.category.ToiletriesParser;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;

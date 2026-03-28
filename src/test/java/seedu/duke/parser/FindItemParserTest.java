@@ -6,7 +6,6 @@ import seedu.duke.command.FindItemByCategoryCommand;
 import seedu.duke.command.FindItemByExpiryDateCommand;
 import seedu.duke.command.FindItemByKeywordCommand;
 import seedu.duke.exception.DukeException;
-import seedu.duke.parser.FindItemParser;
 import seedu.duke.ui.UI;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

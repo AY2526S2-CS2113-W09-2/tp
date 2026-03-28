@@ -2,7 +2,6 @@ package seedu.duke.command;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.duke.command.DeleteItemCommand;
 import seedu.duke.model.Category;
 import seedu.duke.model.Inventory;
 import seedu.duke.model.Item;
