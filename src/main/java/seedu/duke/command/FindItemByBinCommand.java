@@ -1,0 +1,78 @@
+package seedu.duke.command;
+
+import seedu.duke.exception.DukeException;
+import seedu.duke.model.Category;
+import seedu.duke.model.Inventory;
+import seedu.duke.model.Item;
+import seedu.duke.ui.UI;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class FindItemByBinCommand extends Command {
+    private static final Logger logger = Logger.getLogger(FindItemByBinCommand.class.getName());
+    private final String binInput;
+
+    public FindItemByBinCommand(String binInput) {
+        this.binInput = binInput;
+    }
+
+    @Override
+    public void execute(Inventory inventory, UI ui) throws DukeException {
+        assert inventory != null : "FindItemByBinCommand received null inventory.";
+        assert ui != null : "FindItemByBinCommand received null UI.";
+        assert binInput != null : "FindItemByBinCommand received null bin input.";
+
+        List<Item> matches = new ArrayList<>();
+        List<Category> categories = inventory.getCategories();
+
+        for (Category category : categories) {
+            for (Item item : category.getItems()) {
+                if (isMatchingBin(item.getBinLocation(), binInput)) {
+                    matches.add(item);
+                }
+            }
+        }
+
+        if (matches.isEmpty()) {
+            logger.log(Level.INFO, "No items found in bin location: " + binInput);
+            ui.showMessage("No items found in bin location: " + binInput + ".");
+            return;
+        }
+
+        logger.log(Level.INFO, "Found " + matches.size()
+                + " item(s) in bin location '" + binInput.toUpperCase() + "'.");
+
+        ui.showDivider();
+        ui.showMessage("Items in bin location: " + binInput);
+        ui.showNumberedList(matches);
+        ui.showDivider();
+    }
+
+    public static boolean isMatchingBin(String itemBinLocation, String binInput) {
+        assert itemBinLocation != null : "BinLocationParser received null item bin location.";
+        assert binInput != null : "BinLocationParser received null search input.";
+
+        String normalizedBinLocation = itemBinLocation.trim().toLowerCase();
+        String[] binParts = normalizedBinLocation.split("-", 2);
+
+        assert binParts.length == 2 : "Stored bin location is not in LETTER-NUMBER format: " + itemBinLocation;
+
+        String binLetter = binParts[0];
+        String binNumber = binParts[1];
+
+        if (binInput.contains("-")) {
+            return normalizedBinLocation.equals(binInput);
+        }
+
+        if (Character.isLetter(binInput.charAt(0))) {
+            return binLetter.equals(binInput);
+        }
+
+        return binNumber.equals(binInput);
+    }
+}
+

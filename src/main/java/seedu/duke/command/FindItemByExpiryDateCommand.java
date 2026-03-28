@@ -58,9 +58,9 @@ public class FindItemByExpiryDateCommand extends Command {
 
         ui.showDivider();
         ui.showMessage("Items expiring by " + expiryDateInput + ":");
-        for (int i = 0; i < matches.size(); i++) {
-            ui.showMessage((i + 1) + ". " + matches.get(i));
-        }
+        ui.showNumberedList(matches);
         ui.showDivider();
     }
 }
+
+

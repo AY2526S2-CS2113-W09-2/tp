@@ -48,9 +48,9 @@ public class FindItemByKeywordCommand extends Command {
 
         ui.showDivider();
         ui.showMessage("Items matching keyword '" + keywordInput + "':");
-        for (int i = 0; i < matches.size(); i++) {
-            ui.showMessage((i + 1) + ". " + matches.get(i));
-        }
+        ui.showNumberedList(matches);
         ui.showDivider();
     }
 }
+
+

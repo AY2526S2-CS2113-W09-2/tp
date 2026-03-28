@@ -67,6 +67,12 @@ public class UI {
         System.out.println(message);
     }
 
+    public void showNumberedList(List<?> items) {
+        for (int i = 0; i < items.size(); i++) {
+            showMessage((i + 1) + ". " + items.get(i));
+        }
+    }
+
     public void showError(String message) {
         System.out.println("[Error] " + message);
         showDivider();
@@ -368,3 +374,6 @@ public class UI {
         scanner.close();
     }
 }
+
+
+
