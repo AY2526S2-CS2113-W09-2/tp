@@ -8,6 +8,7 @@ import seedu.duke.command.FindItemByKeywordCommand;
 import seedu.duke.exception.DukeException;
 import seedu.duke.ui.UI;
 
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,7 +48,7 @@ public class FindItemParser {
         case "expirydate":
             return new FindItemByExpiryDateCommand(name);
         case "bin":
-            return new FindItemByBinCommand(name);
+            return new FindItemByBinCommand(BinLocationParser.parseSearchInput(name));
         default:
             logger.log(Level.WARNING, "Unknown find type: " + type);
             throw new DukeException("Unknown find type: '" + type + "'. "

@@ -5,6 +5,7 @@ import seedu.duke.model.Category;
 import seedu.duke.model.Inventory;
 import seedu.duke.model.Item;
 import seedu.duke.ui.UI;
+import seedu.duke.parser.BinLocationParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,11 @@ public class FindItemByBinCommand extends Command {
         List<Item> matches = new ArrayList<>();
         List<Category> categories = inventory.getCategories();
 
+        String[] parts = binInput.split("-", 2);
+
         for (Category category : categories) {
             for (Item item : category.getItems()) {
-                if (item.getBinLocation().toLowerCase().contains(binInput.toLowerCase())) {
+                if (BinLocationParser.isMatchingBin(item.getBinLocation(), binInput)) {
                     matches.add(item);
                 }
             }
@@ -44,7 +47,7 @@ public class FindItemByBinCommand extends Command {
         }
 
         logger.log(Level.INFO, "Found " + matches.size()
-                + " item(s) in bin location '" + binInput + "'.");
+                + " item(s) in bin location '" + binInput.toUpperCase() + "'.");
 
         ui.showDivider();
         ui.showMessage("Items in bin location: " + binInput);
