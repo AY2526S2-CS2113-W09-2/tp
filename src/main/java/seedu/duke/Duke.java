@@ -33,19 +33,19 @@ public class Duke {
         storage = new Storage("./data/inventory.txt");
 
         String[] categoryNames = {
-                "fruits",
-                "vegetables",
-                "toiletries",
-                "snacks",
-                "drinks",
-                "icecream",
-                "sweets",
-                "burger",
-                "setmeal",
-                "seafood",
-                "meat",
-                "petfood",
-                "accessories"
+            "fruits",
+            "vegetables",
+            "toiletries",
+            "snacks",
+            "drinks",
+            "icecream",
+            "sweets",
+            "burger",
+            "setmeal",
+            "seafood",
+            "meat",
+            "petfood",
+            "accessories"
         };
 
         for (String categoryName : categoryNames) {
