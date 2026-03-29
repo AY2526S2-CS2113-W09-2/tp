@@ -2,10 +2,23 @@ package seedu.duke.model.items;
 
 import seedu.duke.model.Item;
 
+/**
+ * Represents an accessory item in the inventory.
+ */
 public class Accessories extends Item {
     private String type;
     private String material;
 
+    /**
+     * Creates an accessory item with the given details.
+     *
+     * @param name Name of the item.
+     * @param quantity Quantity of the item.
+     * @param binLocation Storage bin location.
+     * @param expiryDate Expiry date of the item.
+     * @param type Type of accessory.
+     * @param material Material of the accessory.
+     */
     public Accessories(String name, int quantity, String binLocation,
                        String expiryDate, String type, String material) {
         super(name, quantity, binLocation, expiryDate);
@@ -13,22 +26,32 @@ public class Accessories extends Item {
         this.material = material;
     }
 
+    /** @return Type of the accessory. */
     public String getType() {
         return type;
     }
 
+    /** @param type New accessory type. */
     public void setType(String type) {
         this.type = type;
     }
 
+    /** @return Material of the accessory. */
     public String getMaterial() {
         return material;
     }
 
+    /** @param material New accessory material. */
     public void setMaterial(String material) {
         this.material = material;
     }
 
+    /**
+     * Converts this accessory into a storage-friendly string format.
+     *
+     * @param categoryName Name of the category this item belongs to.
+     * @return Storage string representation.
+     */
     @Override
     public String toStorageString(String categoryName) {
         return super.toStorageString(categoryName)
@@ -36,6 +59,11 @@ public class Accessories extends Item {
                 + " material/" + material;
     }
 
+    /**
+     * Returns a string representation of this accessory.
+     *
+     * @return Formatted accessory details.
+     */
     @Override
     public String toString() {
         return "[Accessories] " + super.toString()
