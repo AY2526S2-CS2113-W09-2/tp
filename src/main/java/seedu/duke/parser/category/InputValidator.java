@@ -6,6 +6,7 @@ import seedu.duke.exception.DukeException;
  * Validates that required fields exist in the input and appear in the correct order.
  */
 public class InputValidator {
+
     /**
      * Parses the ice cream-related fields from the given input string.
      *
