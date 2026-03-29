@@ -12,14 +12,30 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Finds items whose bin locations match a given bin input.
+ * The input may represent a full bin, a bin letter, or a bin number.
+ */
 public class FindItemByBinCommand extends Command {
     private static final Logger logger = Logger.getLogger(FindItemByBinCommand.class.getName());
     private final String binInput;
 
+    /**
+     * Creates a find-by-bin command with the specified search input.
+     *
+     * @param binInput Bin search input provided by the user.
+     */
     public FindItemByBinCommand(String binInput) {
         this.binInput = binInput;
     }
 
+    /**
+     * Searches the inventory for items matching the given bin input and displays them.
+     *
+     * @param inventory Inventory to search through.
+     * @param ui UI used to display search results.
+     * @throws DukeException If command execution fails.
+     */
     @Override
     public void execute(Inventory inventory, UI ui) throws DukeException {
         assert inventory != null : "FindItemByBinCommand received null inventory.";
@@ -52,6 +68,14 @@ public class FindItemByBinCommand extends Command {
         ui.showDivider();
     }
 
+    /**
+     * Returns whether a stored bin location matches the user's search input.
+     * The input may be a full bin code, a letter, or a number.
+     *
+     * @param itemBinLocation Bin location stored in the item.
+     * @param binInput User-provided search input.
+     * @return {@code true} if the bin matches, otherwise {@code false}.
+     */
     public static boolean isMatchingBin(String itemBinLocation, String binInput) {
         assert itemBinLocation != null : "BinLocationParser received null item bin location.";
         assert binInput != null : "BinLocationParser received null search input.";

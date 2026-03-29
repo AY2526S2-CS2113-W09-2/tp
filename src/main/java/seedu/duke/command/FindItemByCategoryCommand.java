@@ -11,14 +11,29 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Finds and lists all items belonging to a specified category.
+ */
 public class FindItemByCategoryCommand extends Command {
     private static final Logger logger = Logger.getLogger(FindItemByCategoryCommand.class.getName());
     private final String categoryInput;
 
+    /**
+     * Creates a find-by-category command with the given category name.
+     *
+     * @param categoryInput Name of the category to search for.
+     */
     public FindItemByCategoryCommand(String categoryInput) {
         this.categoryInput = categoryInput;
     }
 
+    /**
+     * Displays all items in the specified category.
+     *
+     * @param inventory Inventory containing the categories.
+     * @param ui UI used to display search results.
+     * @throws DukeException If command execution fails.
+     */
     @Override
     public void execute(Inventory inventory, UI ui) throws DukeException{
         assert inventory != null : "FindItemByCategoryCommand received null inventory.";

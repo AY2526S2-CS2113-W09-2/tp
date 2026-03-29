@@ -7,15 +7,30 @@ import seedu.duke.ui.UI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Deletes a category from the inventory.
+ * If the category contains items, user confirmation is requested first.
+ */
 public class DeleteCategoryCommand extends Command {
     private static final Logger logger = Logger.getLogger(DeleteCategoryCommand.class.getName());
 
     private final String categoryName;
 
+    /**
+     * Creates a delete-category command for the specified category.
+     *
+     * @param categoryName Name of the category to delete.
+     */
     public DeleteCategoryCommand(String categoryName) {
         this.categoryName = categoryName;
     }
 
+    /**
+     * Deletes the specified category after optional confirmation when it is not empty.
+     *
+     * @param inventory Inventory containing the category.
+     * @param ui UI used to show messages and read confirmation input.
+     */
     @Override
     public void execute(Inventory inventory, UI ui) {
         assert inventory != null : "DeleteCategoryCommand received null inventory.";
