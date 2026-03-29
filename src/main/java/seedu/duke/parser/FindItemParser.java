@@ -1,15 +1,18 @@
 package seedu.duke.parser;
 
 import seedu.duke.command.Command;
+import seedu.duke.command.FindItemByKeywordCommand;
 import seedu.duke.command.FindItemByCategoryCommand;
 import seedu.duke.command.FindItemByExpiryDateCommand;
+import seedu.duke.command.FindItemByBinCommand;
+import seedu.duke.exception.DukeException;
 import seedu.duke.ui.UI;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FindItemParser {
-    private static Logger logger = Logger.getLogger(FindItemParser.class.getName());
+    private static final Logger logger = Logger.getLogger(FindItemParser.class.getName());
 
     private final UI ui;
 
@@ -17,25 +20,20 @@ public class FindItemParser {
         this.ui = ui;
     }
 
-    public Command parse(String input) {
+    public Command parse(String input) throws DukeException {
         assert input != null : "FindCommandParser received null input.";
         if (input.isEmpty()) {
             logger.log(Level.WARNING, "Find command missing target.");
-            ui.showInvalidInput("Please specify what to find. "
-                    + "or find category/CATEGORY "
-                    + "or find expiryDate/DATE");
-            return null;
+            throw new DukeException("Please specify what to find. Use: find keyword/KEYWORD, "
+                    + "find category/CATEGORY, find expiryDate/DATE, or find bin/BIN.");
         }
 
         String[] parts = input.split("/", 2);
 
         if (parts.length < 2 || parts[1].trim().isEmpty()) {
             logger.log(Level.WARNING, "Find command missing name.");
-            ui.showInvalidInput("Missing name. "
-                    + "Use: find item/ITEM "
-                    + "or find category/CATEGORY "
-                    + "or find expiryDate/DATE");
-            return null;
+            throw new DukeException("Missing name. Use: find keyword/KEYWORD, "
+                    + "find category/CATEGORY, find expiryDate/DATE, or find bin/BIN.");
         }
 
         String type = parts[0].trim().toLowerCase();
@@ -43,18 +41,18 @@ public class FindItemParser {
 
         switch (type) {
         case "keyword":
-//            return new findItemByKeywordCommand(name);
+            return new FindItemByKeywordCommand(name);
         case "category":
             return new FindItemByCategoryCommand(name);
         case "expirydate":
             return new FindItemByExpiryDateCommand(name);
+        case "bin":
+            return new FindItemByBinCommand(BinLocationParser.parseSearchInput(name));
         default:
             logger.log(Level.WARNING, "Unknown find type: " + type);
-            ui.showInvalidInput("Unknown find type: '" + type
-                    + "Use: find item/ITEM "
-                    + "or find category/CATEGORY"
-                    + "or find expiryDate/DATE");
-            return null;
+            throw new DukeException("Unknown find type: '" + type + "'. "
+                    + "Use: find keyword/KEYWORD, find category/CATEGORY, "
+                    + "find expiryDate/DATE, or find bin/BIN.");
         }
     }
 }

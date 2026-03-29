@@ -13,7 +13,6 @@ public class Item {
         this.binLocation = binLocation;
         this.expiryDate = expiryDate;
     }
-    // getters and setters
 
     public String getName() {
         return name;
@@ -45,6 +44,14 @@ public class Item {
 
     public String getExpiryDate() {
         return expiryDate;
+    }
+
+    public String toStorageString(String categoryName) {
+        return "category/" + categoryName
+                + " item/" + name
+                + " bin/" + binLocation
+                + " qty/" + quantity
+                + " expiryDate/" + expiryDate;
     }
 
     @Override

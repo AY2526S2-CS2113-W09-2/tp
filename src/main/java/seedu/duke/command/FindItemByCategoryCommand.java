@@ -45,9 +45,9 @@ public class FindItemByCategoryCommand extends Command {
 
         ui.showDivider();
         ui.showMessage("Items in category: " + matched.getName());
-        for (int i = 0; i < items.size(); i++) {
-            ui.showMessage((i + 1) + ". " + items.get(i));
-        }
+        ui.showNumberedList(items);
         ui.showDivider();
     }
 }
+
+
