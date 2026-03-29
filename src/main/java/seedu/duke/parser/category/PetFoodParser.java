@@ -5,17 +5,33 @@ import seedu.duke.parser.FieldParser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Parses pet food-specific fields from user input.
+ */
 public class PetFoodParser {
     private static final Logger logger = Logger.getLogger(PetFoodParser.class.getName());
 
     public final String petType;
     public final String brand;
 
+    /**
+     * Creates a {@code PetFoodParser} object with the parsed pet food details.
+     *
+     * @param petType Type of pet the food is for.
+     * @param brand Brand of the pet food.
+     */
     public PetFoodParser(String petType, String brand) {
         this.petType = petType;
         this.brand = brand;
     }
 
+    /**
+     * Parses the pet food-related fields from the given input string.
+     *
+     * @param input User input containing pet food fields.
+     * @return A {@code PetFoodParser} containing the parsed values.
+     * @throws DukeException If any required field is missing or invalid.
+     */
     public static PetFoodParser parse(String input) throws DukeException {
         assert input != null : "PetFoodParser received null input.";
         logger.log(Level.INFO, "Processing PetFood special fields.");

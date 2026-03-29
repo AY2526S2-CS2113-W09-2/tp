@@ -6,17 +6,33 @@ import seedu.duke.parser.FieldParser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Parses set meal-specific fields from user input.
+ */
 public class SetMealParser {
     private static final Logger logger = Logger.getLogger(SetMealParser.class.getName());
 
     public final String mealType;
     public final String foodSize;
 
+    /**
+     * Creates a {@code SetMealParser} object with the parsed set meal details.
+     *
+     * @param mealType Type of the set meal.
+     * @param foodSize Food size of the set meal.
+     */
     public SetMealParser(String mealType, String foodSize) {
         this.mealType = mealType;
         this.foodSize = foodSize;
     }
 
+    /**
+     * Parses the set meal-related fields from the given input string.
+     *
+     * @param input User input containing set meal fields.
+     * @return A {@code SetMealParser} containing the parsed values.
+     * @throws DukeException If any required field is missing or invalid.
+     */
     public static SetMealParser parse(String input) throws DukeException {
         assert input != null : "SetMealParser received null input.";
         logger.log(Level.INFO, "Processing SetMeal special fields.");
