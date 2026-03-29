@@ -5,9 +5,6 @@ import seedu.duke.exception.DukeException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Parses and validates bin location search input.
- */
 public class BinLocationParser {
     private static final Logger logger = Logger.getLogger(BinLocationParser.class.getName());
 
@@ -15,13 +12,6 @@ public class BinLocationParser {
             "Bin search must be either LETTER-NUMBER (e.g. A-10), "
                     + "LETTER only (e.g. A), or NUMBER only (e.g. 10).";
 
-    /**
-     * Parses and validates the given bin search input.
-     *
-     * @param input User input representing a bin search query.
-     * @return Normalized bin search input in lowercase.
-     * @throws DukeException If the input is empty or not in a valid bin format.
-     */
     public static String parseSearchInput(String input) throws DukeException {
         assert input != null : "BinLocationParser received null input.";
 
@@ -58,23 +48,11 @@ public class BinLocationParser {
         return normalizedInput;
     }
 
-    /**
-     * Checks whether the given input consists of exactly one letter.
-     *
-     * @param input Input string to check.
-     * @return {@code true} if the input is a single letter, {@code false} otherwise.
-     */
     private static boolean isSingleLetter(String input) {
         assert input != null : "isSingleLetter received null input.";
         return input.length() == 1 && Character.isLetter(input.charAt(0));
     }
 
-    /**
-     * Checks whether the given input consists only of digits.
-     *
-     * @param input Input string to check.
-     * @return {@code true} if the input is a non-empty integer string, {@code false} otherwise.
-     */
     private static boolean isInteger(String input) {
         assert input != null : "isInteger received null input.";
 

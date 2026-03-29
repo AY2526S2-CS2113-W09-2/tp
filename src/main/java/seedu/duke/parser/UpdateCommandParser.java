@@ -8,29 +8,13 @@ import seedu.duke.ui.UI;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Parses update command input into the corresponding command object.
- */
 public class UpdateCommandParser {
     private final UI ui;
 
-    /**
-     * Creates a parser that uses the given UI to display feedback messages.
-     *
-     * @param ui UI used to show parsing-related messages.
-     */
     public UpdateCommandParser(UI ui) {
         this.ui = ui;
     }
 
-    /**
-     * Parses the given update command input and returns the corresponding command.
-     *
-     * @param input User input specifying the category, item index, and fields to update.
-     * @return The parsed update command, or {@code null} if the input is empty.
-     * @throws DukeException If required fields are missing, the item index is invalid,
-     *                       or the update format is incorrect.
-     */
     public Command parse(String input) throws DukeException {
         assert input != null : "UpdateCommandParser received null input.";
 

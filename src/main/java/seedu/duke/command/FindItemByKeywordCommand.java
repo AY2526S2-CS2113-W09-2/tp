@@ -12,29 +12,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Finds items whose names contain a given keyword.
- */
 public class FindItemByKeywordCommand extends Command {
     private static final Logger logger = Logger.getLogger(FindItemByKeywordCommand.class.getName());
     private final String keywordInput;
 
-    /**
-     * Creates a find-by-keyword command with the specified keyword.
-     *
-     * @param keywordInput Keyword to search for in item names.
-     */
     public FindItemByKeywordCommand(String keywordInput) {
         this.keywordInput = keywordInput;
     }
 
-    /**
-     * Searches the inventory for items whose names contain the given keyword.
-     *
-     * @param inventory Inventory to search through.
-     * @param ui UI used to display matching items.
-     * @throws DukeException If command execution fails.
-     */
     @Override
     public void execute(Inventory inventory, UI ui) throws DukeException {
         assert inventory != null : "FindItemByKeywordCommand received null inventory.";

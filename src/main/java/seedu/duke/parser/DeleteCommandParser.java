@@ -8,29 +8,15 @@ import seedu.duke.ui.UI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Parses delete command input into the corresponding command object.
- */
 public class DeleteCommandParser {
     private static final Logger logger = Logger.getLogger(DeleteCommandParser.class.getName());
 
     private final UI ui;
 
-    /**
-     * Creates a parser that uses the given UI to display feedback messages.
-     *
-     * @param ui UI used to show parsing-related messages.
-     */
     public DeleteCommandParser(UI ui) {
         this.ui = ui;
     }
 
-    /**
-     * Parses the given delete command input and returns the corresponding command.
-     *
-     * @param input User input specifying what to delete.
-     * @return The parsed delete command, or {@code null} if the input is invalid.
-     */
     public Command parse(String input) {
         assert input != null : "DeleteCommandParser received null input.";
         if (input.isEmpty()) {

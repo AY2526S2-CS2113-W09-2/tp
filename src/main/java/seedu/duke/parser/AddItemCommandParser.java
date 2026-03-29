@@ -36,19 +36,10 @@ import seedu.duke.parser.category.SweetsParser;
 import seedu.duke.parser.category.ToiletriesParser;
 import seedu.duke.parser.category.VegetableParser;
 
-/**
- * Parses item details from storage or add input into the corresponding command object.
- */
+
 public class AddItemCommandParser {
     private static final Logger logger = Logger.getLogger(AddItemCommandParser.class.getName());
 
-    /**
-     * Parses fruit input and creates an add-item command for a fruit item.
-     *
-     * @param input Full user input containing fruit item details.
-     * @return Command that adds the parsed fruit item.
-     * @throws DukeException If required fields are missing or invalid.
-     */
     public Command handleFruit(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null fruit input.";
         InputValidator.validate(input, "category/", "item/", "bin/", "qty/",
@@ -62,13 +53,6 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
-    /**
-     * Parses snack input and creates an add-item command for a snack item.
-     *
-     * @param input Full user input containing snack item details.
-     * @return Command that adds the parsed snack item.
-     * @throws DukeException If required fields are missing or invalid.
-     */
     public Command handleSnack(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null snack input.";
         InputValidator.validate(input, "category/", "item/", "bin/", "qty/",
@@ -82,13 +66,6 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
-    /**
-     * Parses toiletries input and creates an add-item command for a toiletries item.
-     *
-     * @param input Full user input containing toiletries item details.
-     * @return Command that adds the parsed toiletries item.
-     * @throws DukeException If required fields are missing or invalid.
-     */
     public Command handleToiletries(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null toiletries input.";
         InputValidator.validate(input, "category/", "item/", "bin/", "qty/",
@@ -102,13 +79,6 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
-    /**
-     * Parses vegetable input and creates an add-item command for a vegetable item.
-     *
-     * @param input Full user input containing vegetable item details.
-     * @return Command that adds the parsed vegetable item.
-     * @throws DukeException If required fields are missing or invalid.
-     */
     public Command handleVegetables(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null vegetable input.";
         InputValidator.validate(input, "category/", "item/", "bin/", "qty/",

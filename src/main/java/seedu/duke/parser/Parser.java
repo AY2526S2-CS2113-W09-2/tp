@@ -7,29 +7,14 @@ import seedu.duke.command.ListCommand;
 import seedu.duke.exception.DukeException;
 import seedu.duke.ui.UI;
 
-/**
- * Parses user input into corresponding Command objects.
- */
 public class Parser {
 
     private final UI ui;
 
-    /**
-     * Creates a Parser with the specified UI instance.
-     *
-     * @param ui The UI used to display messages to the user.
-     */
     public Parser(UI ui) {
         this.ui = ui;
     }
 
-    /**
-     * Parses a raw user input string into a corresponding Command.
-     *
-     * @param input The raw input string entered by the user.
-     * @return The parsed Command, or {@code null} if input is invalid.
-     * @throws DukeException If parsing fails due to invalid format.
-     */
     public Command parse(String input) throws DukeException {
         assert input != null : "Parser received null input.";
 

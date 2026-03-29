@@ -10,29 +10,14 @@ import java.util.logging.Handler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-/**
- * Configures application logging to write log output to a file.
- * Console logging is removed so that logs are recorded only in the
- * specified log file.
- */
 public class LoggerConfig {
     private final File logFile;
 
-    /**
-     * Creates a logger configuration that writes to the given file path.
-     *
-     * @param filePath Path of the log file.
-     */
     public LoggerConfig(String filePath) {
         assert filePath != null : "LoggerConfig received null file path.";
         this.logFile = new File(filePath);
     }
 
-    /**
-     * Creates the log file and its parent directories if they do not already exist.
-     *
-     * @throws IOException If the file or its directories cannot be created.
-     */
     private void createFile() throws IOException {
         if (logFile.exists()) {
             return;
@@ -44,12 +29,6 @@ public class LoggerConfig {
         logFile.createNewFile();
     }
 
-    /**
-     * Sets up the root logger to write log messages to the configured file.
-     * Existing console handlers are removed before the file handler is added.
-     *
-     * @throws DukeException If the logging file cannot be set up.
-     */
     public void setup() throws DukeException {
         try {
             createFile();
