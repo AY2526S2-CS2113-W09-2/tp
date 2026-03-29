@@ -11,11 +11,19 @@ import seedu.duke.ui.UI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Parses find command input into the corresponding command object.
+ */
 public class FindItemParser {
     private static final Logger logger = Logger.getLogger(FindItemParser.class.getName());
 
     private final UI ui;
 
+    /**
+     * Creates a parser that uses the given UI to display feedback messages.
+     *
+     * @param ui UI used to show parsing-related messages.
+     */
     public FindItemParser(UI ui) {
         this.ui = ui;
     }

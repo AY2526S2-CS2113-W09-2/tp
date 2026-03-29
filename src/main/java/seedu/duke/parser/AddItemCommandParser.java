@@ -36,7 +36,9 @@ import seedu.duke.parser.category.SweetsParser;
 import seedu.duke.parser.category.ToiletriesParser;
 import seedu.duke.parser.category.VegetableParser;
 
-
+/**
+ * Parses item details from storage or add input into the corresponding command object.
+ */
 public class AddItemCommandParser {
     private static final Logger logger = Logger.getLogger(AddItemCommandParser.class.getName());
 

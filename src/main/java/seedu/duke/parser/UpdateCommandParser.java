@@ -8,9 +8,17 @@ import seedu.duke.ui.UI;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Parses update command input into the corresponding command object.
+ */
 public class UpdateCommandParser {
     private final UI ui;
 
+    /**
+     * Creates a parser that uses the given UI to display feedback messages.
+     *
+     * @param ui UI used to show parsing-related messages.
+     */
     public UpdateCommandParser(UI ui) {
         this.ui = ui;
     }
