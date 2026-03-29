@@ -25,6 +25,12 @@ public class DeleteCommandParser {
         this.ui = ui;
     }
 
+    /**
+     * Parses the given delete command input and returns the corresponding command.
+     *
+     * @param input User input specifying what to delete.
+     * @return The parsed delete command, or {@code null} if the input is invalid.
+     */
     public Command parse(String input) {
         assert input != null : "DeleteCommandParser received null input.";
         if (input.isEmpty()) {

@@ -28,6 +28,14 @@ public class FindItemParser {
         this.ui = ui;
     }
 
+    /**
+     * Parses the given find command input and returns the corresponding command.
+     *
+     * @param input User input specifying what to find.
+     * @return The parsed find command.
+     * @throws DukeException If the input is empty, missing a search value,
+     *                       or contains an unknown find type.
+     */
     public Command parse(String input) throws DukeException {
         assert input != null : "FindCommandParser received null input.";
         if (input.isEmpty()) {
