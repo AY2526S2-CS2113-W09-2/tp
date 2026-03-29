@@ -31,6 +31,12 @@ public class UI {
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * Capitalises the first letter of the given text.
+     *
+     * @param text Input string.
+     * @return String with the first character capitalised.
+     */
     private String capitalise(String text) {
         if (text == null || text.isEmpty()) {
             return text;
@@ -39,6 +45,11 @@ public class UI {
                 + text.substring(1);
     }
 
+    /**
+     * Reads the next command from the user input.
+     *
+     * @return The user input string, or {@code null} if no input is available.
+     */
     public String readCommand() {
         if (scanner.hasNextLine()) {
             return scanner.nextLine();
@@ -46,6 +57,9 @@ public class UI {
         return null;
     }
 
+    /**
+     * Displays the welcome message and application logo.
+     */
     public void showWelcome() {
         showDivider();
         System.out.println("Hello from\n" + LOGO);
@@ -54,49 +68,93 @@ public class UI {
         showDivider();
     }
 
+    /**
+     * Displays the goodbye message.
+     */
     public void showGoodbye() {
         System.out.println("Goodbye! See you next time!");
         showDivider();
     }
 
+    /**
+     * Displays a divider line for UI formatting.
+     */
     public void showDivider() {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Displays a general message to the user.
+     *
+     * @param message Message to display.
+     */
     public void showMessage(String message) {
         System.out.println(message);
     }
 
+    /**
+     * Displays a numbered list of items.
+     *
+     * @param items List of items to display.
+     */
     public void showNumberedList(List<?> items) {
         for (int i = 0; i < items.size(); i++) {
             showMessage((i + 1) + ". " + items.get(i));
         }
     }
 
+    /**
+     * Displays an error message with formatting.
+     *
+     * @param message Error message to display.
+     */
     public void showError(String message) {
         System.out.println("[Error] " + message);
         showDivider();
     }
 
+    /**
+     * Displays a message indicating an unknown command.
+     */
     public void showUnknownCommand() {
         showError("Unknown command. "
                 + "Type 'help' to see available commands.");
     }
 
+    /**
+     * Displays a message when a category is not found.
+     *
+     * @param categoryName Name of the missing category.
+     */
     public void showCategoryNotFound(String categoryName) {
         showError("Category not found: " + categoryName);
     }
 
-
+    /**
+     * Displays a message indicating invalid input.
+     *
+     * @param details Additional details about the invalid input.
+     */
     public void showInvalidInput(String details) {
         showError("Invalid input. " + details);
     }
 
+    /**
+     * Displays a message indicating empty input.
+     */
     public void showEmptyInput() {
         showError("Input cannot be empty. "
                 + "Type 'help' to see available commands.");
     }
 
+    /**
+     * Displays confirmation that an item was added.
+     *
+     * @param itemName Name of the item.
+     * @param quantity Quantity added.
+     * @param categoryName Category of the item.
+     * @param bin Bin location of the item.
+     */
     public void showItemAdded(String itemName, int quantity,
                               String categoryName, String bin) {
         showDivider();
@@ -107,6 +165,12 @@ public class UI {
         showDivider();
     }
 
+    /**
+     * Displays confirmation that an item was deleted.
+     *
+     * @param itemName Name of the item.
+     * @param categoryName Category of the item.
+     */
     public void showItemDeleted(String itemName,
                                 String categoryName) {
         showDivider();
@@ -115,6 +179,13 @@ public class UI {
         showDivider();
     }
 
+    /**
+     * Displays confirmation that an item was updated.
+     *
+     * @param oldItemName Original item name.
+     * @param newItemName Updated item name.
+     * @param categoryName Category of the item.
+     */
     public void showItemUpdated(String oldItemName,
                                 String newItemName,
                                 String categoryName) {
@@ -127,16 +198,32 @@ public class UI {
         showDivider();
     }
 
+    /**
+     * Displays confirmation that a category was deleted.
+     *
+     * @param categoryName Name of the deleted category.
+     */
     public void showCategoryDeleted(String categoryName) {
         showDivider();
         System.out.println("Deleted category: " + categoryName);
         showDivider();
     }
 
+    /**
+     * Displays a message when an item is not found.
+     *
+     * @param itemName Name of the missing item.
+     */
     public void showItemNotFound(String itemName) {
         showError("Item not found: " + itemName);
     }
 
+    /**
+     * Displays a confirmation prompt before deleting a category with items.
+     *
+     * @param categoryName Name of the category.
+     * @param itemCount Number of items in the category.
+     */
     public void showDeleteCategoryConfirmation(
             String categoryName, int itemCount) {
         showDivider();
@@ -147,17 +234,32 @@ public class UI {
         System.out.print("Type 'yes' to confirm: ");
     }
 
+    /**
+     * Displays a message when category deletion is cancelled.
+     *
+     * @param categoryName Name of the category.
+     */
     public void showDeleteCategoryCancelled(
             String categoryName) {
         System.out.println("Cancelled. Category '"
                 + categoryName + "' was not deleted.");
     }
 
+    /**
+     * Displays a message indicating all items in a category were cleared.
+     *
+     * @param categoryName Name of the category.
+     */
     public void showCategoryItemsCleared(String categoryName) {
         System.out.println("Cleared all items from category: "
                 + categoryName);
     }
 
+    /**
+     * Displays the full inventory including categories and their items.
+     *
+     * @param inventory Inventory to display.
+     */
     public void showInventory(Inventory inventory) {
         List<Category> categories = inventory.getCategories();
         if (categories.isEmpty()) {
@@ -180,6 +282,12 @@ public class UI {
         showDivider();
     }
 
+    /**
+     * Displays a message indicating a corrupted line was skipped.
+     *
+     * @param line The corrupted line.
+     * @param reason Reason for skipping.
+     */
     public void showSkippedLine(String line, String reason) {
         showDivider();
         System.out.println("Skip corrupted line: " + line);
@@ -187,6 +295,9 @@ public class UI {
         showDivider();
     }
 
+    /**
+     * Displays the help menu with all available commands.
+     */
     public void showHelp() {
         showDivider();
         System.out.println("Available commands:");
@@ -370,6 +481,9 @@ public class UI {
         showDivider();
     }
 
+    /**
+     * Closes the scanner and releases resources.
+     */
     public void close() {
         scanner.close();
     }
