@@ -49,6 +49,15 @@ public class Category {
     }
 
     /**
+     * Adds an item to this category.
+     *
+     * @param item Item to be added.
+     */
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    /**
      * Returns the item at the specified index.
      *
      * @param index Index of the item.
@@ -74,15 +83,6 @@ public class Category {
      */
     public boolean isEmpty() {
         return items.isEmpty();
-    }
-
-    /**
-     * Adds an item to this category.
-     *
-     * @param item Item to be added.
-     */
-    public void addItem(Item item) {
-        items.add(item);
     }
 
     /**
