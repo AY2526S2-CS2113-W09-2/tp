@@ -14,7 +14,7 @@ public class Duke {
     private final UI ui;
     private final Parser parser;
     private final Storage storage;
-    
+
     public Duke() throws DukeException {
         ui = new UI();
         inventory = new Inventory();
