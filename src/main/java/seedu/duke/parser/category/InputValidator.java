@@ -10,7 +10,6 @@ public class InputValidator {
      * Parses the ice cream-related fields from the given input string.
      *
      * @param input User input containing ice cream fields.
-     * @return An {@code IceCreamParser} containing the parsed values.
      * @throws DukeException If any required field is missing or invalid.
      */
     public static void validate(
