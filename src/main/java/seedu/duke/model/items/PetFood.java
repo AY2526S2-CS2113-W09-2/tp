@@ -2,10 +2,23 @@ package seedu.duke.model.items;
 
 import seedu.duke.model.Item;
 
+/**
+ * Represents a pet food item in the inventory.
+ */
 public class PetFood extends Item {
     private String petType;
     private String brand;
 
+    /**
+     * Creates a pet food item with the given details.
+     *
+     * @param name Name of the pet food item.
+     * @param quantity Quantity of the item.
+     * @param binLocation Storage bin location.
+     * @param expiryDate Expiry date.
+     * @param petType Type of pet this food is for.
+     * @param brand Brand of the pet food.
+     */
     public PetFood(String name, int quantity, String binLocation,
                    String expiryDate, String petType, String brand) {
         super(name, quantity, binLocation, expiryDate);
@@ -13,22 +26,32 @@ public class PetFood extends Item {
         this.brand = brand;
     }
 
+    /** @return Type of pet this food is for. */
     public String getPetType() {
         return petType;
     }
 
+    /** @param petType New pet type. */
     public void setPetType(String petType) {
         this.petType = petType;
     }
 
+    /** @return Brand of the pet food. */
     public String getBrand() {
         return brand;
     }
 
+    /** @param brand New pet food brand. */
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
+    /**
+     * Converts this pet food item into a storage-friendly string format.
+     *
+     * @param categoryName Name of the category this item belongs to.
+     * @return Storage string representation.
+     */
     @Override
     public String toStorageString(String categoryName) {
         return super.toStorageString(categoryName)
@@ -36,6 +59,11 @@ public class PetFood extends Item {
                 + " brand/" + brand;
     }
 
+    /**
+     * Returns a string representation of this pet food item.
+     *
+     * @return Formatted pet food details.
+     */
     @Override
     public String toString() {
         return "[PetFood] " + super.toString()

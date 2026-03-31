@@ -1,13 +1,5 @@
 package seedu.duke.storage;
 
-import seedu.duke.command.Command;
-import seedu.duke.exception.DukeException;
-import seedu.duke.model.Category;
-import seedu.duke.model.Inventory;
-import seedu.duke.model.Item;
-import seedu.duke.parser.AddItemCommandParser;
-import seedu.duke.ui.UI;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,6 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import seedu.duke.command.Command;
+import seedu.duke.exception.DukeException;
+import seedu.duke.model.Category;
+import seedu.duke.model.Inventory;
+import seedu.duke.model.Item;
+import seedu.duke.parser.AddItemCommandParser;
+import seedu.duke.ui.UI;
 
 public class Storage {
     private static final Logger logger = Logger.getLogger(Storage.class.getName());

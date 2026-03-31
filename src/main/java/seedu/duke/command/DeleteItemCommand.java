@@ -8,10 +8,7 @@ import seedu.duke.ui.UI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Represents a command to delete an item from a specified
- * category by its index.
- */
+
 public class DeleteItemCommand extends Command {
     private static final Logger logger = Logger.getLogger(DeleteItemCommand.class.getName());
 

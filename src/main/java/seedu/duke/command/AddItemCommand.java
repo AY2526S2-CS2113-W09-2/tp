@@ -8,6 +8,7 @@ import seedu.duke.ui.UI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class AddItemCommand extends Command {
     private static final Logger logger = Logger.getLogger(AddItemCommand.class.getName());
 

@@ -13,6 +13,7 @@ import java.util.logging.Logger;
  * Prompts the user for confirmation if the category is
  * not empty.
  */
+
 public class DeleteCategoryCommand extends Command {
     private static final Logger logger = Logger.getLogger(DeleteCategoryCommand.class.getName());
 

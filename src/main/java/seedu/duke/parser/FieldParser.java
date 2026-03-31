@@ -1,19 +1,7 @@
 package seedu.duke.parser;
 
-/**
- * Utility class for extracting field values from a command string.
- */
 public class FieldParser {
 
-    /**
-     * Extracts the value between a start marker and an end marker.
-     * If endMarker is null, extracts until end of string.
-     *
-     * @param input    the full input string
-     * @param startKey the start marker e.g. "item/"
-     * @param endKey   the end marker or null for end of string
-     * @return the extracted value trimmed, or null if not found
-     */
     public static String extractField(String input,
                                       String startKey,
                                       String endKey) {

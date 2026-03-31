@@ -2,7 +2,17 @@ package seedu.duke.parser.category;
 
 import seedu.duke.exception.DukeException;
 
+/**
+ * Validates that required fields exist in the input and appear in the correct order.
+ */
 public class InputValidator {
+
+    /**
+     * Parses the ice cream-related fields from the given input string.
+     *
+     * @param input User input containing ice cream fields.
+     * @throws DukeException If any required field is missing or invalid.
+     */
     public static void validate(
             String input, String... fields) throws DukeException {
         assert input != null : "InputValidator received null input.";

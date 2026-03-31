@@ -54,6 +54,11 @@ public class Item {
                 + " expiryDate/" + expiryDate;
     }
 
+    /**
+     * Returns a string representation of this item.
+     *
+     * @return Formatted item details.
+     */
     @Override
     public String toString() {
         return String.format(

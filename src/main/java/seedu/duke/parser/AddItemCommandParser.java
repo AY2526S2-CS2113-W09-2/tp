@@ -92,6 +92,13 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
+    /**
+     * Parses drinks input and creates an add-item command for a drinks item.
+     *
+     * @param input Full user input containing drinks item details.
+     * @return Command that adds the parsed drinks item.
+     * @throws DukeException If required fields are missing or invalid.
+     */
     public Command handleDrinks(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null drinks input.";
         logger.log(Level.INFO, "Parsing add-item command for drinks.");
@@ -107,6 +114,13 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
+    /**
+     * Parses ice cream input and creates an add-item command for an ice cream item.
+     *
+     * @param input Full user input containing ice cream item details.
+     * @return Command that adds the parsed ice cream item.
+     * @throws DukeException If required fields are missing or invalid.
+     */
     public Command handleIceCream(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null ice cream input.";
         logger.log(Level.INFO, "Parsing add-item command for ice cream.");
@@ -122,6 +136,13 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
+    /**
+     * Parses sweets input and creates an add-item command for a sweets item.
+     *
+     * @param input Full user input containing sweets item details.
+     * @return Command that adds the parsed sweets item.
+     * @throws DukeException If required fields are missing or invalid.
+     */
     public Command handleSweets(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null sweets input.";
         logger.log(Level.INFO, "Parsing add-item command for sweets.");
@@ -137,6 +158,13 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
+    /**
+     * Parses set meal input and creates an add-item command for a set meal item.
+     *
+     * @param input Full user input containing set meal item details.
+     * @return Command that adds the parsed set meal item.
+     * @throws DukeException If required fields are missing or invalid.
+     */
     public Command handleSetMeal(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null set meal input.";
         logger.log(Level.INFO, "Parsing add-item command for set meal.");
@@ -152,6 +180,13 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
+    /**
+     * Parses seafood input and creates an add-item command for a seafood item.
+     *
+     * @param input Full user input containing seafood item details.
+     * @return Command that adds the parsed seafood item.
+     * @throws DukeException If required fields are missing or invalid.
+     */
     public Command handleSeafood(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null seafood input.";
         logger.log(Level.INFO, "Parsing add-item command for seafood.");
@@ -167,6 +202,13 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
+    /**
+     * Parses meat input and creates an add-item command for a meat item.
+     *
+     * @param input Full user input containing meat item details.
+     * @return Command that adds the parsed meat item.
+     * @throws DukeException If required fields are missing or invalid.
+     */
     public Command handleMeat(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null meat input.";
         logger.log(Level.INFO, "Parsing add-item command for meat.");
@@ -182,6 +224,13 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
+    /**
+     * Parses pet food input and creates an add-item command for a pet food item.
+     *
+     * @param input Full user input containing pet food item details.
+     * @return Command that adds the parsed pet food item.
+     * @throws DukeException If required fields are missing or invalid.
+     */
     public Command handlePetFood(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null pet food input.";
         logger.log(Level.INFO, "Parsing add-item command for pet food.");
@@ -197,6 +246,13 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
+    /**
+     * Parses accessories input and creates an add-item command for an accessories item.
+     *
+     * @param input Full user input containing accessories item details.
+     * @return Command that adds the parsed accessories item.
+     * @throws DukeException If required fields are missing or invalid.
+     */
     public Command handleAccessories(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null accessories input.";
         logger.log(Level.INFO, "Parsing add-item command for accessories.");
@@ -212,7 +268,13 @@ public class AddItemCommandParser {
         return new AddItemCommand(commonFields.categoryName, item);
     }
 
-
+    /**
+     * Parses burger input and creates an add-item command for a burger item.
+     *
+     * @param input Full user input containing burger item details.
+     * @return Command that adds the parsed burger item.
+     * @throws DukeException If required fields are missing or invalid.
+     */
     public Command handleBurger(String input) throws DukeException {
         assert input != null : "AddItemCommandParser received null burger input.";
         logger.log(Level.INFO, "Parsing add-item command for burger.");

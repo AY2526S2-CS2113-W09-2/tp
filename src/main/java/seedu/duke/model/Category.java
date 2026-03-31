@@ -3,6 +3,7 @@ package seedu.duke.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Category {
     private String name;
     private final List<Item> items;

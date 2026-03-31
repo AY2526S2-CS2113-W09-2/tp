@@ -7,10 +7,6 @@ import seedu.duke.model.Item;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Handles all user-facing input and output.
- * All messages displayed to the user go through this class.
- */
 public class UI {
 
     private static final String DIVIDER =
@@ -85,7 +81,6 @@ public class UI {
     public void showCategoryNotFound(String categoryName) {
         showError("Category not found: " + categoryName);
     }
-
 
     public void showInvalidInput(String details) {
         showError("Invalid input. " + details);
