@@ -12,10 +12,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Finds items whose bin locations match a given bin input.
- * The input may represent a full bin, a bin letter, or a bin number.
- */
 public class FindItemByBinCommand extends Command {
     private static final Logger logger = Logger.getLogger(FindItemByBinCommand.class.getName());
     private final String binInput;
