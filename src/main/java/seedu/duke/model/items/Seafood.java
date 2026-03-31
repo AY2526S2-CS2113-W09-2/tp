@@ -8,6 +8,7 @@ import seedu.duke.model.Item;
 public class Seafood extends Item {
     private String seafoodType;
     private String origin;
+    private boolean isFrozen;
 
     /**
      * Creates a seafood item with the given details.
@@ -20,10 +21,12 @@ public class Seafood extends Item {
      * @param origin Origin of the seafood.
      */
     public Seafood(String name, int quantity, String binLocation,
-                   String expiryDate, String seafoodType, String origin) {
+                   String expiryDate, String seafoodType,
+                   String origin, boolean isFrozen) {
         super(name, quantity, binLocation, expiryDate);
         this.seafoodType = seafoodType;
         this.origin = origin;
+        this.isFrozen = isFrozen;
     }
 
     /** @return Origin of the seafood. */
@@ -56,7 +59,8 @@ public class Seafood extends Item {
     public String toStorageString(String categoryName) {
         return super.toStorageString(categoryName)
                 + " seafoodType/" + seafoodType
-                + " origin/" + origin;
+                + " origin/" + origin
+                + " isFrozen/" + isFrozen;
     }
 
     /**
@@ -68,6 +72,7 @@ public class Seafood extends Item {
     public String toString() {
         return "[Seafood] " + super.toString()
                 + ", Seafood Type: " + seafoodType
-                + ", Origin: " + origin;
+                + ", Origin: " + origin
+                + ", Frozen: " + isFrozen;
     }
 }

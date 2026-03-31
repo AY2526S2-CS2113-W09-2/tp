@@ -8,6 +8,7 @@ import seedu.duke.model.Item;
 public class SetMeal extends Item {
     private String mealType;
     private String foodSize;
+    private boolean hasDrinks;
 
     /**
      * Creates a set meal item with the given details.
@@ -20,10 +21,12 @@ public class SetMeal extends Item {
      * @param foodSize Size of the meal.
      */
     public SetMeal(String name, int quantity, String binLocation,
-                   String expiryDate, String mealType, String foodSize) {
+                   String expiryDate, String mealType,
+                   String foodSize, boolean hasDrinks) {
         super(name, quantity, binLocation, expiryDate);
         this.mealType = mealType;
         this.foodSize = foodSize;
+        this.hasDrinks = hasDrinks;
     }
 
     /** @return Size of the food. */
@@ -56,7 +59,8 @@ public class SetMeal extends Item {
     public String toStorageString(String categoryName) {
         return super.toStorageString(categoryName)
                 + " mealType/" + mealType
-                + " foodSize/" + foodSize;
+                + " foodSize/" + foodSize
+                + " hasDrinks/" + hasDrinks;
     }
 
     /**
@@ -68,6 +72,7 @@ public class SetMeal extends Item {
     public String toString() {
         return "[SetMeal] " + super.toString()
                 + ", Meal Type: " + mealType
-                + ", Food Size: " + foodSize;
+                + ", Food Size: " + foodSize
+                + ", Drinks Accompanied: " + hasDrinks;
     }
 }

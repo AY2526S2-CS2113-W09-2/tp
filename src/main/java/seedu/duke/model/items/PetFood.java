@@ -8,6 +8,7 @@ import seedu.duke.model.Item;
 public class PetFood extends Item {
     private String petType;
     private String brand;
+    private boolean isDryFood;
 
     /**
      * Creates a pet food item with the given details.
@@ -20,10 +21,12 @@ public class PetFood extends Item {
      * @param brand Brand of the pet food.
      */
     public PetFood(String name, int quantity, String binLocation,
-                   String expiryDate, String petType, String brand) {
+                   String expiryDate, String petType,
+                   String brand, boolean isDryFood) {
         super(name, quantity, binLocation, expiryDate);
         this.petType = petType;
         this.brand = brand;
+        this.isDryFood = isDryFood;
     }
 
     /** @return Type of pet this food is for. */
@@ -56,7 +59,8 @@ public class PetFood extends Item {
     public String toStorageString(String categoryName) {
         return super.toStorageString(categoryName)
                 + " petType/" + petType
-                + " brand/" + brand;
+                + " brand/" + brand
+                + " isDryFood/" + isDryFood;
     }
 
     /**
@@ -68,6 +72,7 @@ public class PetFood extends Item {
     public String toString() {
         return "[PetFood] " + super.toString()
                 + ", Pet Type: " + petType
-                + ", Brand: " + brand;
+                + ", Brand: " + brand
+                + ", Dry Food: " + isDryFood;
     }
 }

@@ -8,6 +8,7 @@ import seedu.duke.model.Item;
 public class Accessories extends Item {
     private String type;
     private String material;
+    private boolean isFragile;
 
     /**
      * Creates an accessory item with the given details.
@@ -20,10 +21,11 @@ public class Accessories extends Item {
      * @param material Material of the accessory.
      */
     public Accessories(String name, int quantity, String binLocation,
-                       String expiryDate, String type, String material) {
+                       String expiryDate, String type, String material, boolean isFragile) {
         super(name, quantity, binLocation, expiryDate);
         this.type = type;
         this.material = material;
+        this.isFragile = isFragile;
     }
 
     /** @return Type of the accessory. */
@@ -56,7 +58,8 @@ public class Accessories extends Item {
     public String toStorageString(String categoryName) {
         return super.toStorageString(categoryName)
                 + " type/" + type
-                + " material/" + material;
+                + " material/" + material
+                + " isFragile/" + isFragile;
     }
 
     /**
@@ -68,6 +71,7 @@ public class Accessories extends Item {
     public String toString() {
         return "[Accessories] " + super.toString()
                 + ", Type: " + type
-                + ", Material: " + material;
+                + ", Material: " + material
+                + ", Fragile: " +isFragile;
     }
 }

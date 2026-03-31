@@ -8,6 +8,7 @@ import seedu.duke.model.Item;
 public class Sweets extends Item {
     private String brand;
     private String sweetnessLevel;
+    private boolean isChewy;
 
     /**
      * Creates a sweets item with the given details.
@@ -21,10 +22,11 @@ public class Sweets extends Item {
      */
     public Sweets(String name, int quantity, String binLocation,
                   String expiryDate, String brand,
-                  String sweetnessLevel) {
+                  String sweetnessLevel, boolean isChewy) {
         super(name, quantity, binLocation, expiryDate);
         this.brand = brand;
         this.sweetnessLevel = sweetnessLevel;
+        this.isChewy = isChewy;
     }
 
     /** @return Brand of the sweets item. */
@@ -57,7 +59,8 @@ public class Sweets extends Item {
     public String toStorageString(String categoryName) {
         return super.toStorageString(categoryName)
                 + " brand/" + brand
-                + " sweetnessLevel/" + sweetnessLevel;
+                + " sweetnessLevel/" + sweetnessLevel
+                + " isChewy/" + isChewy;
     }
 
     /**
@@ -69,6 +72,7 @@ public class Sweets extends Item {
     public String toString() {
         return "[Sweets] " + super.toString()
                 + ", Brand: " + brand
-                + ", Sweetness Level: " + sweetnessLevel;
+                + ", Sweetness Level: " + sweetnessLevel
+                + ", Chewy: " + isChewy;
     }
 }

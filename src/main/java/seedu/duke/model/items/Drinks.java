@@ -8,6 +8,7 @@ import seedu.duke.model.Item;
 public class Drinks extends Item {
     private String brand;
     private String flavour;
+    private boolean isCarbonated;
 
     /**
      * Creates a drink item with the given details.
@@ -20,10 +21,11 @@ public class Drinks extends Item {
      * @param flavour Flavour of the drink.
      */
     public Drinks(String name, int quantity, String binLocation, String expiryDate,
-                  String brand, String flavour) {
+                  String brand, String flavour, boolean isCarbonated) {
         super(name, quantity, binLocation, expiryDate);
         this.brand = brand;
         this.flavour = flavour;
+        this.isCarbonated = isCarbonated;
     }
 
     /** @return Brand of the drink. */
@@ -56,7 +58,8 @@ public class Drinks extends Item {
     public String toStorageString(String categoryName) {
         return super.toStorageString(categoryName)
                 + " brand/" + brand
-                + " flavour/" + flavour;
+                + " flavour/" + flavour
+                + " isCarbonated/" + isCarbonated;
     }
 
     /**
@@ -68,6 +71,7 @@ public class Drinks extends Item {
     public String toString() {
         return "[Drinks] " + super.toString()
                 + ", Brand: " + brand
-                + ", Flavour: " + flavour;
+                + ", Flavour: " + flavour
+                + ", Carbonated: " + isCarbonated;
     }
 }
