@@ -1,0 +1,40 @@
+@startuml
+title Sequence Diagram for FindItemByQtyCommand (Parse and Command Creation)
+
+autonumber
+hide footbox
+
+actor User
+participant ":UI" as UI
+participant ":InventoryDock" as InventoryDock
+participant ":Parser" as Parser
+participant ":FindItemParser" as FindItemParser
+participant ":CommonFieldParser" as CommonFieldParser
+participant ":FindItemByQtyCommand" as FindItemByQtyCommand
+
+User -> UI: enter find qty command
+activate UI
+UI -> InventoryDock: input
+activate InventoryDock
+InventoryDock -> Parser: parse(input)
+activate Parser
+
+Parser -> FindItemParser: parse(arguments)
+activate FindItemParser
+FindItemParser -> CommonFieldParser: parseQuantity(name)
+activate CommonFieldParser
+CommonFieldParser --> FindItemParser: qtyInput
+deactivate CommonFieldParser
+
+create FindItemByQtyCommand
+FindItemParser -> FindItemByQtyCommand: FindItemByQtyCommand(qtyInput)
+activate FindItemByQtyCommand
+FindItemByQtyCommand --> FindItemParser: command
+deactivate FindItemByQtyCommand
+FindItemParser --> Parser: command
+deactivate FindItemParser
+Parser --> InventoryDock: command
+deactivate Parser
+deactivate InventoryDock
+deactivate UI
+@enduml
